@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bayt al haya - Premium Comfortable Clothing</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config = { theme: { extend: { colors: { primary: '#8A6D3B', secondary: '#D4C19C' }, borderRadius: { 'none': '0px', 'sm': '4px', DEFAULT: '8px', 'md': '12px', 'lg': '16px', 'xl': '20px', '2xl': '24px', '3xl': '32px', 'full': '9999px', 'button': '8px' } } } }</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Italiana&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <style>
+        :where([class^="ri-"])::before {
+            content: "\f3c2";
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: 'Cormorant', serif;
+            letter-spacing: 0.02em;
+        }
+
+        .brand-name {
+            font-family: 'Italiana', serif;
+            letter-spacing: 0.1em;
+        }
+
+        .hero-slide {
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .animate-fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s ease forwards;
+        }
+
+        .animate-fade-in {
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        .animate-slide-in {
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: slideIn 0.8s ease forwards;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+
+        .text-gradient {
+            background: linear-gradient(45deg, var(--tw-colors-primary), #B8997C);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .carousel-container {
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+        }
+
+        .carousel-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .carousel-item {
+            scroll-snap-align: start;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .whatsapp-btn {
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* New animations */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-white">
+    <!-- Navigation -->
+    <nav class="fixed w-full top-0 z-50 bg-white bg-opacity-95 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="images\logo main.png" alt="" class="w-40 h-auto"
+                    style="width: 7rem;border-radius: 12px;height: 61px;">
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#home" class="text-gray-700 hover:text-primary transition-colors cursor-pointer">Home</a>
+                <a href="#about" class="text-gray-700 hover:text-primary transition-colors cursor-pointer">About</a>
+                <a href="#products"
+                    class="text-gray-700 hover:text-primary transition-colors cursor-pointer">Products</a>
+                <a href="#contact" class="text-gray-700 hover:text-primary transition-colors cursor-pointer">Contact</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <!-- Instagram (Red) -->
+                <a href="https://www.instagram.com/bayt_al_haya_?igsh=MWUzcXR0czE5eGFhMQ==" target="_blank"
+                    class="w-8 h-8 flex items-center justify-center text-red-600 hover:text-red-800 transition-colors cursor-pointer">
+                    <i class="ri-instagram-line ri-lg"></i>
+                </a>
+
+                <!-- Facebook -->
+                <a href="https://www.facebook.com/yourpage" target="_blank"
+                    class="w-8 h-8 flex items-center justify-center text-blue-600 hover:text-blue-800 transition-colors cursor-pointer">
+                    <i class="ri-facebook-fill ri-lg"></i>
+                </a>
+
+                <!-- YouTube -->
+                <a href="https://www.youtube.com/yourchannel" target="_blank"
+                    class="w-8 h-8 flex items-center justify-center text-red-600 hover:text-red-800 transition-colors cursor-pointer">
+                    <i class="ri-youtube-fill ri-lg"></i>
+                </a>
+
+                <button id="menuBtn" class="md:hidden w-8 h-8 flex items-center justify-center cursor-pointer">
+                    <i class="ri-menu-line ri-lg"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white w-full py-4 px-6 shadow-md">
+            <div class="flex flex-col space-y-4">
+                <a href="#home" class="text-gray-700 hover:text-primary transition-colors cursor-pointer">Home</a>
+                <a href="#about" class="text-gray-700 hover:text-primary transition-colors cursor-pointer">About</a>
+                <a href="#products"
+                    class="text-gray-700 hover:text-primary transition-colors cursor-pointer">Products</a>
+                <a href="#contact" class="text-gray-700 hover:text-primary transition-colors cursor-pointer">Contact</a>
+            </div>
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    <section id="home" class="pt-16 md:pt-20">
+        <div class="relative w-full h-[500px] overflow-hidden">
+            <div id="heroCarousel" class="flex transition-transform duration-700 h-full">
+                <div class="hero-slide min-w-full h-full relative">
+                    <img src="images\img1.jpg"
+                        alt="Premium Clothing" class="w-full h-full object-cover object-top">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-30 flex flex-col justify-center items-center text-white p-6">
+                        <h2 class="text-3xl md:text-4xl font-semibold mb-2 text-center animate-fade-up"
+                            style="animation-delay: 0.3s">Elegant Comfort</h2>
+                        <p class="text-lg md:text-xl text-center max-w-md animate-fade-up"
+                            style="animation-delay: 0.6s">Experience the luxury of breathable fabrics</p>
+                    </div>
+                </div>
+                <div class="hero-slide min-w-full h-full relative">
+                    <img src="images\img2.jpg"
+                        alt="Premium Collection" class="w-full h-full object-cover object-top">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-30 flex flex-col justify-center items-center text-white p-6">
+                        <h2 class="text-3xl md:text-4xl font-semibold mb-2 text-center animate-fade-up"
+                            style="animation-delay: 0.3s">Crafted Excellence</h2>
+                        <p class="text-lg md:text-xl text-center max-w-md animate-fade-up"
+                            style="animation-delay: 0.6s">Quality that speaks through every stitch</p>
+                    </div>
+                </div>
+                <div class="hero-slide min-w-full h-full relative">
+                    <img src="images\img3.jpeg"
+                        alt="Fabric Detail" class="w-full h-full object-cover object-top">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-30 flex flex-col justify-center items-center text-white p-6">
+                        <h2 class="text-3xl md:text-4xl font-semibold mb-2 text-center animate-fade-up"
+                            style="animation-delay: 0.3s">Premium Fabrics</h2>
+                        <p class="text-lg md:text-xl text-center max-w-md animate-fade-up"
+                            style="animation-delay: 0.6s">Feel the difference in every touch</p>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute bottom-6 left-0 right-0 flex justify-center space-x-2">
+                <button class="w-3 h-3 rounded-full bg-white bg-opacity-50 carousel-dot active" data-index="0"></button>
+                <button class="w-3 h-3 rounded-full bg-white bg-opacity-50 carousel-dot" data-index="1"></button>
+                <button class="w-3 h-3 rounded-full bg-white bg-opacity-50 carousel-dot" data-index="2"></button>
+            </div>
+        </div>
+    </section>
+    <!-- About Section -->
+    <section id="about" class="py-16 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-semibold text-gray-800 mb-2 fade-in">About Bayt al haya</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6 fade-in"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto fade-in">Where comfort meets elegance. Our premium clothing
+                    pieces are crafted with the finest breathable fabrics to ensure both style and comfort in every
+                    wear.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+                <div class="fade-in">
+                    <img src="images\img1.jpg"
+                        alt="Craftsmanship"
+                        class="w-full h-64 object-cover object-top rounded-lg shadow-md hover-scale">
+                </div>
+                <div class="flex flex-col justify-center fade-in">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Craftsmanship & Quality</h3>
+                    <p class="text-gray-600 mb-4">At Bayt al haya, we believe that quality is in the details. Each piece
+                        is meticulously crafted to ensure durability, comfort, and timeless style.</p>
+                    <p class="text-gray-600">Our commitment to using only the finest breathable fabrics means you'll not
+                        only look good but feel good in our clothing, no matter the occasion.</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">
+                <div class="flex flex-col justify-center order-2 md:order-1 fade-in">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Our Philosophy</h3>
+                    <p class="text-gray-600 mb-4">We believe that clothing should be an extension of your personality
+                        while providing the comfort you deserve. That's why we focus on creating pieces that blend
+                        elegance with everyday wearability.</p>
+                    <p class="text-gray-600">From the selection of materials to the final stitch, every step in our
+                        process is guided by our commitment to excellence and sustainability.</p>
+                </div>
+                <div class="order-1 md:order-2 fade-in">
+                    <img src="https://readdy.ai/api/search-image?query=premium%20fabric%20selection%2C%20elegant%20textile%20materials%2C%20high-quality%20fabric%20swatches%2C%20soft%20natural%20lighting%2C%20minimalist%20luxury%20aesthetic%2C%20professional%20photography%2C%20neutral%20background%2C%20fashion%20editorial%20style&width=375&height=300&seq=5&orientation=landscape"
+                        alt="Premium Fabrics"
+                        class="w-full h-64 object-cover object-top rounded-lg shadow-md hover-scale">
+                </div>
+            </div>
+        </div>
+    </section><!-- Product Showcase -->
+    <section id="products" class="py-16 px-4 bg-gray-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-semibold text-gray-800 mb-2 fade-in">Our Collection</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6 fade-in"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto fade-in">Discover our range of premium clothing pieces, each
+                    designed with comfort and elegance in mind.</p>
+            </div>
+
+            <div class="relative w-full h-[500px] overflow-hidden fade-in">
+                <button id="prevCollection"
+                    class="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-white bg-opacity-70 rounded-full p-2 shadow-md cursor-pointer hover:bg-opacity-90 transition-all">
+                    <i class="ri-arrow-left-s-line ri-lg"></i>
+                </button>
+
+                <div id="collectionCarousel" class="flex transition-transform duration-700 h-full">
+                    <!-- Product 1 -->
+                    <div class="hero-slide min-w-full h-full relative">
+                        <img src="images\product 1.jpg" alt="Casual Shirt"
+                            class="w-full h-full object-cover object-top">
+                        <div
+                            class="absolute inset-0 bg-black bg-opacity-30 flex flex-col justify-center items-center text-white p-6">
+                            <h2 class="text-3xl md:text-4xl font-semibold mb-2 text-center animate-fade-up"
+                                style="animation-delay: 0.3s">Elegant Casual Shirt</h2>
+                            <p class="text-lg md:text-xl text-center max-w-md animate-fade-up"
+                                style="animation-delay: 0.6s">Premium breathable fabric for everyday comfort</p>
+                            <p class="text-2xl font-medium mt-4 animate-fade-up" style="animation-delay: 0.9s">₹2,499
+                            </p>
+                            <div class="mt-6 flex space-x-4 animate-fade-up" style="animation-delay: 1.2s">
+                                <a href="https://wa.me/917306096007?text=I'm%20interested%20in%20the%20Elegant%20Casual%20Shirt%20(₹2499)"
+                                    class="px-6 py-3 bg-green-500 text-white rounded-button hover:bg-green-600 transition-colors flex items-center">
+                                    <i class="ri-whatsapp-line mr-2"></i> Book Now
+                                </a>
+                                <a href="https://wa.me/917306096007?text=I%20have%20a%20question%20about%20the%20Elegant%20Casual%20Shirt"
+                                    class="px-6 py-3 bg-white text-gray-800 rounded-button hover:bg-gray-100 transition-colors flex items-center">
+                                    <i class="ri-question-line mr-2"></i> Enquire
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="hero-slide min-w-full h-full relative">
+                        <img src="images\product 2.jpg" alt="Formal Blazer"
+                            class="w-full h-full object-cover object-top">
+                        <div
+                            class="absolute inset-0 bg-black bg-opacity-30 flex flex-col justify-center items-center text-white p-6">
+                            <h2 class="text-3xl md:text-4xl font-semibold mb-2 text-center animate-fade-up"
+                                style="animation-delay: 0.3s">Premium Formal Blazer</h2>
+                            <p class="text-lg md:text-xl text-center max-w-md animate-fade-up"
+                                style="animation-delay: 0.6s">Elegance with breathability for formal occasions</p>
+                            <p class="text-2xl font-medium mt-4 animate-fade-up" style="animation-delay: 0.9s">₹4,999
+                            </p>
+                            <div class="mt-6 flex space-x-4 animate-fade-up" style="animation-delay: 1.2s">
+                                <a href="https://wa.me/917306096007?text=I'm%20interested%20in%20the%20Premium%20Formal%20Blazer%20(₹4999)"
+                                    class="px-6 py-3 bg-green-500 text-white rounded-button hover:bg-green-600 transition-colors flex items-center">
+                                    <i class="ri-whatsapp-line mr-2"></i> Book Now
+                                </a>
+                                <a href="https://wa.me/917306096007?text=I%20have%20a%20question%20about%20the%20Premium%20Formal%20Blazer"
+                                    class="px-6 py-3 bg-white text-gray-800 rounded-button hover:bg-gray-100 transition-colors flex items-center">
+                                    <i class="ri-question-line mr-2"></i> Enquire
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 3 -->
+                    <div class="hero-slide min-w-full h-full relative">
+                        <img src="images\product 3.jpg" alt="Loungewear" class="w-full h-full object-cover object-top">
+                        <div
+                            class="absolute inset-0 bg-black bg-opacity-30 flex flex-col justify-center items-center text-white p-6">
+                            <h2 class="text-3xl md:text-4xl font-semibold mb-2 text-center animate-fade-up"
+                                style="animation-delay: 0.3s">Luxury Loungewear</h2>
+                            <p class="text-lg md:text-xl text-center max-w-md animate-fade-up"
+                                style="animation-delay: 0.6s">Comfort redefined for relaxation</p>
+                            <p class="text-2xl font-medium mt-4 animate-fade-up" style="animation-delay: 0.9s">₹1,999
+                            </p>
+                            <div class="mt-6 flex space-x-4 animate-fade-up" style="animation-delay: 1.2s">
+                                <a href="https://wa.me/917306096007?text=I'm%20interested%20in%20the%20Luxury%20Loungewear%20(₹1999)"
+                                    class="px-6 py-3 bg-green-500 text-white rounded-button hover:bg-green-600 transition-colors flex items-center">
+                                    <i class="ri-whatsapp-line mr-2"></i> Book Now
+                                </a>
+                                <a href="https://wa.me/917306096007?text=I%20have%20a%20question%20about%20the%20Luxury%20Loungewear"
+                                    class="px-6 py-3 bg-white text-gray-800 rounded-button hover:bg-gray-100 transition-colors flex items-center">
+                                    <i class="ri-question-line mr-2"></i> Enquire
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="nextCollection"
+                    class="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-white bg-opacity-70 rounded-full p-2 shadow-md cursor-pointer hover:bg-opacity-90 transition-all">
+                    <i class="ri-arrow-right-s-line ri-lg"></i>
+                </button>
+
+                <div class="absolute bottom-6 left-0 right-0 flex justify-center space-x-2">
+                    <button class="w-3 h-3 rounded-full bg-white bg-opacity-50 collection-dot active"
+                        data-index="0"></button>
+                    <button class="w-3 h-3 rounded-full bg-white bg-opacity-50 collection-dot" data-index="1"></button>
+                    <button class="w-3 h-3 rounded-full bg-white bg-opacity-50 collection-dot" data-index="2"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Collection -->
+
+    <!-- Testimonials -->
+    <section class="py-16 px-4 bg-gray-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-semibold text-gray-800 mb-2 fade-in">What Our Customers Say</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6 fade-in"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto fade-in">Hear from those who have experienced the comfort and
+                    quality of Bayt al haya.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+                <div class="bg-white p-6 rounded-lg shadow-md fade-in hover-scale">
+                    <div class="flex items-center mb-4">
+                        <div class="text-primary">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"The quality of the fabric is exceptional. I've never worn anything so
+                        comfortable yet elegant. Perfect for both casual and formal occasions."</p>
+                    <div class="flex items-center">
+                        <div class="mr-4 w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center">
+                            <i class="ri-user-line ri-lg text-gray-500"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-gray-800">Priya Menon</h4>
+                            <p class="text-gray-500 text-sm">Kochi</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md fade-in hover-scale" style="animation-delay: 0.2s">
+                    <div class="flex items-center mb-4">
+                        <div class="text-primary">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"I purchased a set from the Summer Breeze collection and I'm amazed at
+                        how breathable the fabric is. Perfect for Kerala's climate while looking stylish."</p>
+                    <div class="flex items-center">
+                        <div class="mr-4 w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center">
+                            <i class="ri-user-line ri-lg text-gray-500"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-gray-800">Arjun Nair</h4>
+                            <p class="text-gray-500 text-sm">Thrissur</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md fade-in hover-scale" style="animation-delay: 0.4s">
+                    <div class="flex items-center mb-4">
+                        <div class="text-primary">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-half-fill"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"The traditional wear I bought for my daughter's wedding was both
+                        comfortable and elegant. Received many compliments on the quality and design."</p>
+                    <div class="flex items-center">
+                        <div class="mr-4 w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center">
+                            <i class="ri-user-line ri-lg text-gray-500"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-gray-800">Lakshmi Krishnan</h4>
+                            <p class="text-gray-500 text-sm">Irinjalakuda</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-semibold text-gray-800 mb-2 fade-in">Get In Touch</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6 fade-in"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto fade-in">Visit our store or reach out to us for any inquiries
+                    about our products.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+                <div class="bg-white p-6 rounded-lg shadow-md fade-in hover-scale">
+                    <h3 class="text-xl font-medium text-gray-800 mb-4">Contact Information</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="mr-3 w-8 h-8 flex items-center justify-center text-primary">
+                                <i class="ri-map-pin-line ri-lg floating" style="animation-delay: 0.2s"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-700">Address</h4>
+                                <p class="text-gray-600">Koramuttiparambil House, AzadRoad, Irinjalakuda P O, Thrissur,
+                                    Kerala 680121</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="mr-3 w-8 h-8 flex items-center justify-center text-primary">
+                                <i class="ri-phone-line ri-lg floating" style="animation-delay: 0.4s"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-700">Phone</h4>
+                                <p class="text-gray-600">+91 7306096007, +91 6238123553</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="mr-3 w-8 h-8 flex items-center justify-center text-primary">
+                                <i class="ri-time-line ri-lg floating" style="animation-delay: 0.6s"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-700">Business Hours</h4>
+                                <p class="text-gray-600">Monday - Saturday: 10:00 AM - 8:00 PM</p>
+                                <p class="text-gray-600">Sunday: 11:00 AM - 6:00 PM</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="mr-3 w-8 h-8 flex items-center justify-center text-primary">
+                                <i class="ri-instagram-line ri-lg floating" style="animation-delay: 0.8s"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-700">Social Media</h4>
+                                <a href="https://www.instagram.com/bayt_al_haya_?igsh=MWUzcXR0czE5eGFhMQ=="
+                                    class="text-primary hover:underline" target="_blank">@bayt_al_haya_</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fade-in">
+                    <div class="bg-white p-6 rounded-lg shadow-md h-full hover-scale">
+                        <h3 class="text-xl font-medium text-gray-800 mb-4">Send Us a Message</h3>
+                        <form id="contactForm" class="space-y-4">
+                            <div>
+                                <label for="name" class="block text-gray-700 mb-1">Name</label>
+                                <input type="text" id="name"
+                                    class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                                    required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-gray-700 mb-1">Email</label>
+                                <input type="email" id="email"
+                                    class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                                    required>
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-gray-700 mb-1">Phone</label>
+                                <input type="tel" id="phone"
+                                    class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                                    required>
+                            </div>
+                            <div>
+                                <label for="message" class="block text-gray-700 mb-1">Message</label>
+                                <textarea id="message" rows="4"
+                                    class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                                    required></textarea>
+                            </div>
+                            <button type="submit"
+                                class="w-full px-6 py-3 bg-primary text-white rounded-button hover:bg-opacity-90 transition-colors cursor-pointer pulse">Send
+                                Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 fade-in">
+                <div class="bg-white p-2 rounded-lg shadow-md overflow-hidden hover-scale">
+                    <!-- Map Section -->
+                    <div class="relative h-[300px] w-full rounded-2xl overflow-hidden shadow-lg">
+                        <!-- Background placeholder image -->
+                        <div class="absolute top-0 left-0 h-full w-full bg-cover bg-center z-0"
+                            style="background-image: url('https://public.readdy.ai/gen_page/map_placeholder_1280x720.png')">
+                        </div>
+
+                        <!-- Google Map iframe -->
+                        <iframe class="absolute top-0 left-0 w-full h-full z-10"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3924.6614084012235!2d76.19318687397589!3d10.36893436657992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba7f7c1b0b072db%3A0xaa8fd9562f64ec9e!2sAzad%20road%20irinjalakuda!5e0!3m2!1sen!2sin!4v1751535927293!5m2!1sen!2sin"
+                            style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+
+                </div>
+            </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <img src="images\logo main.png" alt="" class="w-40 h-auto" style="width: 6rem;border-radius: 11px;">
+                    <p class="text-gray-300">Premium clothing crafted with comfort and elegance in mind. Experience the
+                        luxury of breathable fabrics.</p>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="https://www.instagram.com/bayt_al_haya_?igsh=MWUzcXR0czE5eGFhMQ==" target="_blank"
+                            class="w-8 h-8 flex items-center justify-center bg-white bg-opacity-10 rounded-full hover:bg-opacity-20 transition-colors cursor-pointer">
+                            <i class="ri-instagram-line"></i>
+                        </a>
+                        <a href="https://wa.me/917306096007" target="_blank"
+                            class="w-8 h-8 flex items-center justify-center bg-white bg-opacity-10 rounded-full hover:bg-opacity-20 transition-colors cursor-pointer">
+                            <i class="ri-whatsapp-line"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-medium mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home"
+                                class="text-gray-300 hover:text-white transition-colors cursor-pointer">Home</a></li>
+                        <li><a href="#about"
+                                class="text-gray-300 hover:text-white transition-colors cursor-pointer">About Us</a>
+                        </li>
+                        <li><a href="#products"
+                                class="text-gray-300 hover:text-white transition-colors cursor-pointer">Products</a>
+                        </li>
+                        <li><a href="#contact"
+                                class="text-gray-300 hover:text-white transition-colors cursor-pointer">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-medium mb-4">Contact Us</h3>
+                    <ul class="space-y-2>
+    <li class=" flex items-start">
+                        <i class="ri-map-pin-line mr-2 mt-1"></i>
+                        <span class="text-gray-300">Koramuttiparambil House, AzadRoad, Irinjalakuda P O, Thrissur,
+                            Kerala 680121</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ri-phone-line mr-2 mt-1"></i>
+                            <span class="text-gray-300">+91 7306096007, +91 6238123553</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ri-mail-line mr-2 mt-1"></i>
+                            <span class="text-gray-300">info@baytalhaya.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Bayt al haya. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/917306096007" target="_blank"
+        class="fixed bottom-6 right-6 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg whatsapp-btn cursor-pointer z-50">
+        <i class="ri-whatsapp-line ri-2x text-white"></i>
+    </a>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Hero Carousel
+        let currentHeroSlide = 0;
+        const heroSlides = document.querySelectorAll('.hero-slide');
+        const heroCarousel = document.getElementById('heroCarousel');
+        const heroDots = document.querySelectorAll('.carousel-dot');
+
+        function showHeroSlide(index) {
+            currentHeroSlide = index;
+            heroCarousel.style.transform = `translateX(-${currentHeroSlide * 100}%)`;
+            heroDots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentHeroSlide);
+            });
+        }
+
+        heroDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                showHeroSlide(parseInt(dot.dataset.index));
+            });
+        });
+
+        // Auto slide for hero carousel
+        let heroInterval = setInterval(() => {
+            currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
+            showHeroSlide(currentHeroSlide);
+        }, 5000);
+
+        // Pause on hover
+        heroCarousel.addEventListener('mouseenter', () => {
+            clearInterval(heroInterval);
+        });
+
+        heroCarousel.addEventListener('mouseleave', () => {
+            heroInterval = setInterval(() => {
+                currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
+                showHeroSlide(currentHeroSlide);
+            }, 5000);
+        });
+
+        // Collection Carousel
+        let currentCollectionSlide = 0;
+        const collectionCarousel = document.getElementById('collectionCarousel');
+        const collectionDots = document.querySelectorAll('.collection-dot');
+        const prevCollectionBtn = document.getElementById('prevCollection');
+        const nextCollectionBtn = document.getElementById('nextCollection');
+
+        function showCollectionSlide(index) {
+            currentCollectionSlide = index;
+            collectionCarousel.style.transform = `translateX(-${currentCollectionSlide * 100}%)`;
+            collectionDots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentCollectionSlide);
+            });
+        }
+
+        collectionDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                showCollectionSlide(parseInt(dot.dataset.index));
+            });
+        });
+
+        prevCollectionBtn.addEventListener('click', () => {
+            currentCollectionSlide = (currentCollectionSlide - 1 + 3) % 3;
+            showCollectionSlide(currentCollectionSlide);
+        });
+
+        nextCollectionBtn.addEventListener('click', () => {
+            currentCollectionSlide = (currentCollectionSlide + 1) % 3;
+            showCollectionSlide(currentCollectionSlide);
+        });
+
+        // Scroll animations
+        function checkScroll() {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('load', checkScroll);
+
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Here you would typically send the form data to your server
+            alert('Thank you for your message! We will get back to you soon.');
+            contactForm.reset();
+        });
+    </script>
+</body>
+
+</html>

@@ -105,6 +105,7 @@
         .carousel-item {
             scroll-snap-align: start;
         }
+        
 
         .fade-in {
             opacity: 0;
@@ -425,11 +426,11 @@
                 <div class="bg-white p-6 rounded-lg shadow-md fade-in hover-scale">
                     <div class="flex items-center mb-4">
                         <div class="text-primary">
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill" style="color: yellow;"></i>
+                            <i class="ri-star-fill" style="color: yellow;"></i>
+                            <i class="ri-star-fill" style="color: yellow;"></i>
+                            <i class="ri-star-fill" style="color: yellow;"></i>
+                            <i class="ri-star-fill" style="color: yellow;"></i>
                         </div>
                     </div>
                     <p class="text-gray-600 mb-4">"The quality of the fabric is exceptional. I've never worn anything so
@@ -447,11 +448,11 @@
                 <div class="bg-white p-6 rounded-lg shadow-md fade-in hover-scale" style="animation-delay: 0.2s">
                     <div class="flex items-center mb-4">
                         <div class="text-primary">
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill" style="color: yellow;"></i>
+                            <i class="ri-star-fill" style="color: yellow;"></i>
+                            <i class="ri-star-fill" style="color: yellow;"></i>
+                            <i class="ri-star-fill" style="color: yellow;"></i>
+                            <i class="ri-star-fill" style="color: yellow;"></i>
                         </div>
                     </div>
                     <p class="text-gray-600 mb-4">"I purchased a set from the Summer Breeze collection and I'm amazed at
@@ -469,11 +470,11 @@
                 <div class="bg-white p-6 rounded-lg shadow-md fade-in hover-scale" style="animation-delay: 0.4s">
                     <div class="flex items-center mb-4">
                         <div class="text-primary">
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                            <i class="ri-star-half-fill"></i>
+                            <i class="ri-star-fill" style="color: yellow;"></i>
+                            <i class="ri-star-fill" style="color: yellow;" ></i>
+                            <i class="ri-star-fill" style="color: yellow;"></i>
+                            <i class="ri-star-fill" style="color: yellow;"></i>
+                            <i class="ri-star-half-fill" style="color: yellow;"></i>
                         </div>
                     </div>
                     <p class="text-gray-600 mb-4">"The traditional wear I bought for my daughter's wedding was both
@@ -673,43 +674,41 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Hero Carousel
-        let currentHeroSlide = 0;
-        const heroSlides = document.querySelectorAll('.hero-slide');
-        const heroCarousel = document.getElementById('heroCarousel');
-        const heroDots = document.querySelectorAll('.carousel-dot');
+       let currentHeroSlide = 0;
+const heroSlides = document.querySelectorAll('.hero-slide');
+const heroCarousel = document.getElementById('heroCarousel');
+const heroDots = document.querySelectorAll('.carousel-dot');
 
-        function showHeroSlide(index) {
-            currentHeroSlide = index;
-            heroCarousel.style.transform = `translateX(-${currentHeroSlide * 100}%)`;
-            heroDots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === currentHeroSlide);
-            });
-        }
+function showHeroSlide(index) {
+    heroCarousel.style.transform = `translateX(-${index * 100}%)`;
+    heroDots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+    });
+    currentHeroSlide = index;
+}
 
-        heroDots.forEach(dot => {
-            dot.addEventListener('click', () => {
-                showHeroSlide(parseInt(dot.dataset.index));
-            });
-        });
+// Dot click
+heroDots.forEach(dot => {
+    dot.addEventListener('click', () => {
+        const index = parseInt(dot.dataset.index);
+        showHeroSlide(index);
+    });
+});
 
-        // Auto slide for hero carousel
-        let heroInterval = setInterval(() => {
-            currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
-            showHeroSlide(currentHeroSlide);
-        }, 5000);
+// Auto-slide
+function startHeroInterval() {
+    return setInterval(() => {
+        const nextSlide = (currentHeroSlide + 1) % heroSlides.length;
+        showHeroSlide(nextSlide);
+    }, 5000);
+}
 
-        // Pause on hover
-        heroCarousel.addEventListener('mouseenter', () => {
-            clearInterval(heroInterval);
-        });
+let heroInterval = startHeroInterval();
 
-        heroCarousel.addEventListener('mouseleave', () => {
-            heroInterval = setInterval(() => {
-                currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
-                showHeroSlide(currentHeroSlide);
-            }, 5000);
-        });
+// Pause on hover
+heroCarousel.addEventListener('mouseenter', () => clearInterval(heroInterval));
+heroCarousel.addEventListener('mouseleave', () => heroInterval = startHeroInterval());
+
 
         // Collection Carousel
         let currentCollectionSlide = 0;
